@@ -1,0 +1,63 @@
+<script>
+//转换成字符串
+	var isPalindrome = function(n) {
+		var test = n
+		var digit
+		var result = ""
+		while(test >= 1) {
+			digit = test % 10
+			test = (test - digit) / 10
+			result = result + digit
+		}
+		if (result == "" + n) {
+			return true
+		} 
+			return false
+	}
+
+
+//直接转换成数字
+
+	var isPalindrome2 = function(n) {
+		var test = n
+		var digit
+		var reverse = 0
+		while (test >= 1) {
+			digit = test % 10
+			reverse = reverse * 10 + digit
+			test = (test - digit) / 10
+		}
+		if (reverse == n) {
+			return true
+		}
+		return false
+	}
+
+//对比头和尾
+	
+	var length = function(n) {
+		var count = 0
+		while(n >= 1) {
+			count = count + 1
+			n =  n / 10
+		}
+		return count
+	}
+
+	var isPalindrome3 = function(n) {
+		var left
+		var right
+		var count = 1
+		var width = length(n)
+		do {
+			left = parseInt(n / 10 ** (width - count)) % 10
+			right = parseInt(n / 10 ** (count - 1)) % 10
+			count = count + 1
+			if (left != right) {
+				return false
+			}
+		} while (count <= width / 2){
+			return true
+		}
+	}
+</script>

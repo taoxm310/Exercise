@@ -1,0 +1,65 @@
+<script>
+//最小公倍数
+var lcm = function(a,b) {
+	var start = a
+	var count = 0
+	while(true) {
+		console.log(count ++)
+		if (start % a == 0 && start % b == 0) {
+			return start
+		}
+		start++
+	}
+}
+
+var lcm2 = function (a,b) {
+	var max = a > b? a : b  
+	var start = max
+	while(true) {
+		if (start % a == 0 && start % b == 0) {
+			return start
+		}
+		start += max
+	}
+}
+//最大公约数
+var gcd = function(a,b) {
+	var min = a > b? b : a
+	var start = min
+	while(true) {
+		if(a % start == 0 && b % start == 0) {
+			return start
+		}
+		start --
+	}
+}
+//公式
+var gcd2 = function(a,b) {
+	return a*b / lcm(a,b)
+}
+
+//
+var gcd3 = function(a,b) {
+	var min = a > b? b : a
+	var max = a > b? a : b
+	if (max == min) {
+		return max
+	} else {
+		return gcd3(min, max - min)
+	}
+}
+
+var gcd4 = function(a,b) {
+	var t
+  while (b != 0) {
+    t = b
+    b = a % b
+    a = t
+  }
+  return a
+}
+	gcd(a,b) = gcd(b,r) = gcd(b, a % b) = gcd(a % b, b % (a % b))
+	当a mod b=0 时gcd(a,b)=b,否则
+	gcd(a,b) = gcd(b,a mod b)
+
+</script>

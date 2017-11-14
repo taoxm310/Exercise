@@ -1,0 +1,21 @@
+<script>
+	function letter2digit (letter) {
+		var code = letter.charCodeAt()
+		if(code > 58) {
+			return code - 87  // a,b,c,转换成数字
+		} else {
+			return code - 48  // 0,1,2,等还是转换成0,1,2
+		}
+	}
+
+	function myParseInt(num, idx) {//num输入是字符串
+		var result = 0
+		// var weight = 1
+		for (var i = num.length - 1, j = 0; i >= 0; i--, j++) {
+			result = result + letter2digit(num[i]) * idx ** j
+			// result = result + letter2digit(num[i]) * weight
+			//weight = weight * idx
+		}
+		return result
+	}
+</script>

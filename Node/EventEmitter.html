@@ -1,0 +1,44 @@
+<script>
+	class Eventer {
+		constructor() {
+			this.events = Object.create(null)
+		}
+
+		on(eventName,handler){
+			if(this.events[eventName]){
+				this.events[eventName].push(handler)
+			} else {
+				this.events[eventName] = [handler]
+			}
+			return this
+		}
+		trigger(eventName){
+			if(this.events[eventName]){
+				//trigger无论现在前还是后面都会在条件达成之后末尾才生效
+				setTimeout(() => {
+					for(let f of this.events[eventName]){
+						f.call(this)
+					}
+				})
+			}
+			return this
+		}
+		once(eventName,handler){
+			var self = this
+			this.on(eventName,function one(){
+				handler.call(this)
+				self.off(eventName,one)
+			})	
+			return this
+		}
+		off(eventName,handler){
+			if(this.events[eventName]){
+				var index = this.events[eventName].indexOf(handler)
+				if(index > -1){
+					this.events[eventName].splice(index,1)
+				}
+		}
+		return this
+
+	}
+</script>

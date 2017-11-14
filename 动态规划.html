@@ -1,0 +1,113 @@
+<script>
+//最长回文子序列
+function longestSeries(s){
+	var len = s.length
+	if(len == 0){
+		return 0
+	} else if (len == 1){
+		return 1
+	} else if (s[0] == s[len - 1]){
+		return 2 + longestSeries(s.substr(1,len -2))
+	} else {
+		return Math.max(
+				longestSeries(s.substr(1)),
+				longestSeries(s.substr(0 , len - 1))
+			)
+	}
+}
+	
+
+//矩阵相乘
+function minMulTimes(mats){
+
+	if(mats.length < 2){
+		return 0
+	}
+	var mulTimes = new Array(mats.length - 1)
+	for(var i = 0; i < mulTimes.length; i++){
+		let leftMats = mats.slice(0,i+1)
+		let rightMats = mats.slice(i)
+		mulTimes[i] = minMulTimes(leftMats) + minMulTimes(rightMats) + mats[0][0]*mats[i][1]*mats[mats.length-1][1]
+
+	}
+
+	return Math.min(...mulTimes)
+}
+
+//
+function longestSub(ary){
+	if(ary.length == 1){
+		return 1
+	}
+
+	if(ary.length == 0){
+		return 0
+	}
+	var ls = new Array(ary.length)
+	for(var i = ls.length-1;i>=0; i--){
+
+	}
+}
+
+//滑雪场
+function longestRoute(matrix,i,j){
+	var max = 0
+	for (var i = 0; i < matrix.length ;i++){
+		for(var j = 0; i < matrix[0].length;j++){
+			if(1 + Math.max(longestRoute(matrix,)))
+		}
+	}
+
+}
+
+//最长回文字符串
+function longestPalin(s){
+	var len = s.length
+	if(len == 0 || len == 1){
+		return 1
+	}
+
+	if(s[0] === s[len-1] && isPalin(s.substr(1,l-2))){
+		return 1
+	} else {
+		return Math.max(
+			longestPalin(s.substr(0,len-1)),
+			longestPalin(s.substr(1)))
+	}
+
+function isPalin(s){
+	return s== s.split("").reverse().join("")
+}
+
+
+//最长公共子序列
+function LongestCommonSubsequence(a,b){
+	if(a.length === 0|| b.length === 0){
+		return ''
+	}
+	if(a[0] == b[0]){
+		return a[0] + LongestCommonSubsequence(a.substr(1),b.substr(1))
+	} else {
+		var lcs1 = LongestCommonSubsequence(a,b.substr(1))
+		var lcs2 = LongestCommonSubsequence(a.substr(1),b)
+		return lcs1.length > lcs2.length ? lcs1.length : lcs2.length
+	}
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

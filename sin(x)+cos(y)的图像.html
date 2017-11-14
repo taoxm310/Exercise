@@ -1,0 +1,44 @@
+<div>
+	
+<script>
+var f = (x,y) => Math.sin(x) + Math.cos(y)
+var start = -7
+var end = 7
+var step = 0.2
+var factor = 50
+for(var x = start; x <=end;x+= step){
+	for(var y = start; y <= end; y+=step){
+		z = f(x,y)
+		document.write(`
+		<i style = "transform:translate3d(${x * factor}px,${y * factor}px,${z * factor}px); background-color:hsl(${z*180},60%,50%);"></i>
+			`)
+	}
+}
+</script>
+</div>
+
+<style>
+div {
+	width:400px;
+	height:400px;
+	background-color: rgba(0,0,0,0.3);
+	margin:auto;
+	margin-top:100px;
+	position: relative;
+	transform:perspective(1000px) rotateX(0deg);
+	transition: 3s linear;
+	transform-style: preserve-3d;
+}
+
+div:hover {
+	transform:perspective(1000px) rotateX(90deg);
+}
+	i{
+		height:5px;
+		width:5px;
+		background-color: pink;
+		position: absolute;
+		left:50%;
+		top:50%;
+	}
+</style>

@@ -1,0 +1,39 @@
+<script>
+function letter2digit(letter){
+	var map = {
+		a:2,
+		b:2,
+		c:2,
+		d:3,
+		e:3,
+		f:3,
+	}
+	return map[letter]  
+}	
+function letter2digit(letter){
+	return parseInt((word[i].charCodeAt() - 97)/3) + 2
+}
+
+
+
+function word2number(word){
+	var result = ''
+	for(var i = 0; i < word.length; i++){
+		result + = letter2digit(word[i])
+	}
+	return result
+}
+
+
+function word2number(word){
+	var result = ''
+	for(var i = 0; i < word.length; i++){
+		result += parseInt((word.charCodeAt(i) - 97)/3) + 2
+	}
+	return result
+}
+
+
+
+
+</script>

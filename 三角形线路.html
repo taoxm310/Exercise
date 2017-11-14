@@ -1,0 +1,22 @@
+<script>
+  var triangle = [
+    [2],  //0  i
+    [4,1],  //1  i+1, j ; i+1, j+1
+    [7,2,4],  //2
+    [9,6,1,8],  //3
+    [2,6,8,5,4],  //4
+  ]
+
+  function maxRoute(triangle, i = 0, j = 0) {
+    if( i == triangle.length -1) {
+      return triangle[i][j]
+    } else {
+      return triangle[i][j] + Math.max(
+        maxRoute(triangle, i+1,j+1),
+        maxRoute(triangle, i+1, j+1)
+        )
+    }
+
+  }
+
+</script>

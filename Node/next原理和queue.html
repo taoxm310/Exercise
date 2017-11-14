@@ -1,0 +1,42 @@
+<script>
+	var mws = [f1,f2,f3,f4]
+	mws.reduceRight((prevNext,f) => {
+		return function next(){
+			f(a,b,prevNext)
+		}
+	}, function next(){})
+
+	class Queue {
+		constructor(props) {
+			super(props);
+			this.fns = []
+		}
+		queue (){
+			if(this.fns.length){
+				this.fns.push(f)
+			} else {
+				this.fns.push(f)
+				this.start
+			}
+			return this
+		}
+		start(){
+			this.fns[0](next => {
+				this.fns.shift()
+				this.start()
+			})
+		}
+
+	}
+
+	new Queue()
+	.queue(function(next){
+
+	})
+	.queue(function(next){
+
+	})	
+	.queue(function(next){
+
+	})
+</script>

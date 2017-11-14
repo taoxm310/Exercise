@@ -1,0 +1,29 @@
+<script>
+	function chunk(array, size = 1) {
+		var result = new Array(Math.ceil(array.length/size))
+		var component = []
+		for (var i = 0; i < array.length; i++) {
+			component.push(array[i])
+			if(component.length == size) {
+				result[Math.floor(i/size)] = component
+				component = []
+			}
+		}
+		if (array.length % size !== 0) {
+			result[Math.floor((i-1)/size)] = temp
+		}
+		return result
+	}
+
+	function chunk2(array, size) {
+		var result = new Array(Math.ceil(array.length/size))
+		for(var i = 0; i < result.length; i ++) {
+			result[i] = []
+		}
+
+		for (var j = 0; j < array.length; j ++) {
+			result[parseInt(j / size)][j % size] = array[j]
+		}
+		return result
+	}
+</script>

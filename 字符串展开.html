@@ -1,0 +1,20 @@
+<script>
+	function expandStr(str) {
+		var result = []
+		// var result = ""
+		for(var i = 0; i < str.length; i++) {
+			if(str[i] != "-") {
+				result.push(str[i])
+				// result = result + str[i]
+			} else {
+				var start = str[i-1].charCodeAt()
+				var end = str[i+1].charCodeAt()
+				for (j = start + 1; j < end ; j ++) {
+					result.push(String.fromCharCode(j))
+					// result = result + String.fromCharCode(j)
+				}
+			}
+		}
+		return result.join("")
+	}
+</script>

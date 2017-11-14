@@ -1,0 +1,124 @@
+
+<body>
+  
+  <div>
+    <ul>
+      <li><a href=""><img src="" alt=""></a></li>
+      <li><a href=""><img src="" alt=""></a></li>
+      <li><a href=""><img src="" alt=""></a></li>
+      <li><a xxx href=""><img src="" alt=""></a></li>
+      <li><a href=""><img src="" alt=""></a></li>
+    </ul>
+  </div>
+</body>
+
+<script>
+// getElementsByName
+// getElementsByClassName
+// getElementsByTagName
+// getElementById
+  function getElementsByTagName(el, tagName, result = []) {
+    if (el) {
+      for(var i = 0; i<el.children.length; i++) {
+        if (el.children[i].tagName === tagName.toUpperCase()) {
+          result.push(el.children[i])
+        }
+        getElementsByTagName(el.children[i], tagName, result)
+      }
+      return result
+    } else {
+      return result
+    }
+  }
+
+  function getElementsByTagName(el, tagName, result = []) {
+    tagName = tagName.toUpperCase()
+    if (el) {
+      for(var i = 0; i<el.children.length; i++) {
+        if (el.children[i].tagName === tagName) {
+          result.push(el.children[i])
+        }
+        getElementsByTagName(el.children[i], tagName, result)
+      }
+      return result
+    } else {
+      return result
+    }
+  }
+
+
+  function getElementsByTagName(el, tagName) {
+    var result = []
+    tagName = tagName.toUpperCase()
+    return get(el)
+    function get(el){ //每次调用getElementsByTagName，使用get函数时候 都要重新再构建一下get函数。结束之后get就不存在了
+      if (el) {
+        for(var i = 0; i<el.children.length; i++) {
+          if (el.children[i].tagName === tagName) {
+            result.push(el.children[i])
+          }
+          get(el.children[i], tagName)
+        }
+        return result
+      } else {
+        return result
+      }
+    }
+  }
+
+  var getElementsByName = function() {
+    var result
+    return function getElementsByTagName(el, tagName) {
+      result = []
+      tagName = tagName.toUpperCase()
+      get(el, tagName)
+      return result
+    }
+    function get(el, tagName) { //运行一次之后，get函数就存在于文档中，直接调用就可以了
+      if (el) {
+        for(var i = 0; i<el.children.length; i++) {
+          if (el.children[i].tagName === tagName) {
+            result.push(el.children[i])
+          }
+          get(el.children[i], tagName)
+        }
+        return result
+      } else {
+        return result
+      }
+    }
+  }()
+
+
+  function getElementsByTagName(el, tagName, result = []) {
+    tagName = tagName.toUpperCase()
+    if (el) {
+      for(var i = 0; i<el.children.length; i++) {
+        if (el.children[i].tagName === tagName) {
+          result.push(el.children[i])
+        }
+        getElementsByTagName(el.children[i], tagName, result)
+      }
+      return result
+    } else {
+      return result
+    }
+  }
+
+
+  function hasClass(el, className) {
+    return el.className.split(' ').indexOf(className) > -1
+  }
+
+  lodash = {
+    a: function(p){
+      return f(p)
+      function f(){
+
+      }
+      function g(){
+
+      }
+    }
+  }
+</script>

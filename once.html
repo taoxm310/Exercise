@@ -1,0 +1,19 @@
+<script>
+function once(fn) {
+	var called = false
+	return function(...args){
+		if(!called){
+			called = true
+			return fn(...args)
+		}
+	}
+
+}
+
+var log = once(console.log)
+
+log(2)// effective
+log(2)// ineffective
+log(2)// ineffective
+
+</script>

@@ -1,0 +1,168 @@
+<script>
+class LinkedList{
+	/**
+	 * creates a new linked list instance with a variable number of arguments, regardless of number or type of the arguments.
+	 * @param  {...[type]} args [description]
+	 * @return {[type]}         [description]
+	 */
+	static of(...args){//
+		return new LinkedList(args)
+	}
+	/**
+	 * 构建链表
+	 * @param  {[array]} init 
+	 * @return {[type]}      
+	 */
+	constructor(init){
+		if(init instanceof LinkedList){  //此条用于复制init,copy
+			return init.map(it => it)   
+		}
+		this.head = null
+		if(init && init.length){
+			let cur = this.head = {val:init[0],next:null}
+			let node
+			for(let i = 1; i<init.length;i++){
+				node = {val:init[i],next:null}
+				cur.next = node
+				cur = node
+			}
+		}
+	}
+	/**
+	 * 增加或者删减指定位置，非已经实现
+	 * @param  {[type]}    pos    [description]
+	 * @param  {[type]}    amount [description]
+	 * @param  {...[type]} values [description]
+	 * @return {[type]}           [description]
+	 */
+	splice(pos,amount,...values){
+		let sublist = new LinkedList(values) //values构成链表
+		let i = 0
+		let cur = this.head
+		let curnext
+		while(cur.next.next && i < pos) {//数主节点删除的位置
+			cur = cur.next
+			i++
+		}
+		curnext = cur.next
+		cur.next = sublist.head
+		let j = 0
+		while(curnext.next && j < amount){ //数需要被删除的节点
+			curnext = curnext.next
+			j++
+		}
+		let subcur = sublist.head
+		while(subcur.next){
+			subcur = subcur.next
+		}
+		subcur.next = curnext.next
+		return this
+
+	}
+	push(value){
+		if(!this.head){
+			this.head = {val:value,next:null}
+		} else {
+			let cur = this.head
+			while(cur.next){
+				cur = cur.next
+			}
+			cur.next = {val:value,next:null}
+		}
+		return this
+	}
+	pop(){
+		if(!this.head){//一个都没有
+			return null
+		} else if (!this.head.next){ //只有一个
+			let node = this.head
+			this.head = null
+			return node.val
+		} else {
+			let cur = this.head
+			while(cur.next.next){
+				cur = cur.next
+			}
+			let node = cur.next
+			cur.next = null
+			return node.val
+
+		}
+	}
+	unshift(value){
+		let node = {val:value,next:this.head}
+		this.head = node
+		return this
+	}
+	shift(){
+		if(!this.head){
+			return null
+		}
+		let node = this.head
+		if(this.head.next){
+			this.head = this.head.next
+		} else {
+			this.head = null
+		}
+		return node.val
+	}
+	reduce(reducer, initial, ctx){
+		if(!this.head){
+			return initial
+		}
+		let cur = this.head
+		if(initial == undefined){
+			initial = this.head.val
+			cur = cur.next
+		}
+
+		while(cur){
+			initial = reducer(initial,cur.val)
+			cur = cur.next
+		}
+		return initial
+	}
+	map(mapper,ctx){
+		if(!this.head){
+			return this
+		}
+		let cur = this.head
+		let node = {val:mapper(cur.val),next:null}
+		let mappedHead = node
+		cur = cur.next
+		while(cur){
+			node.next = {val:mapper(cur.val),next:null}
+			node = node.next
+			cur= cur.next
+		}
+		let list = new LinkedList()
+		list.head = mappedHead
+		return list
+	}
+	map2(mapper){
+		if(this.head){
+			let head = {val:mapper2(this.head.val),next:null}
+			head.next = this.tail().map2(mapper).head
+			let list = new LinkedList()
+			list.head = head
+			return list
+		} else {
+			return new LinkedList()
+		}
+	}
+	tail(){
+		var list = new LinkedList()
+		list.head = this.head.next
+		return list
+	}
+	toArray(){
+		let result = []
+		let cur = this.head
+		while(cur){
+			result.push(cur.val)
+			cur = cur.next
+		}
+		return result
+	}
+}
+</script>

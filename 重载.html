@@ -1,0 +1,43 @@
+<script>
+	
+//如果给f传入了两个参数且第一个为Number类型，第二个为String类型，则调用f1函数并返回其返回值 
+//如果给f传入了两个参数且第一个为Array类型，第二个为Object类型，则调用f2函数并返回其返回值 
+//如果给f传入了一个参数且为Boolean类型，则调用f3函数并返回其返回值
+//如果实际传入的函数不满足以上，则调用f4函数并返回其返回的值 
+Function.reload = function(types) {
+    return function(...args) {debugger
+ 		for(var i = 0; i < types.length -1 ; i++){
+ 			var len = types[i].length - 1
+ 			var type = types[i]
+ 			if( len == arguments.length){
+ 				for(var j = 0; j < len ; j++){
+ 					if(type[j] !== typeof arguments[j] || !arguments[j] instanceof type[j] ){
+ 						break
+ 					}
+ 				}
+ 				return type[len](...args) 
+ 				
+ 			}
+ 			
+ 		}
+ 		return types[types.length-1](...args)
+ 		
+ 	}
+}
+
+
+var f = Function.reload([
+    [Number, String, function f1(a, b) {
+    	console.log(arguments[0])
+    }],
+    [Array, Object, function f1(a, b) {
+    	console.log(arguments[1])
+    }],
+    [Boolean, function f3(b) {
+    	console.log(arguments[0])
+    }],
+    function f4(...args) {
+    	console.log(arguments)
+    }
+])
+</script>

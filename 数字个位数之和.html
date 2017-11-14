@@ -1,0 +1,34 @@
+<script>
+//
+	var toSingle = function(n) {
+		var digit
+		var result = 0
+		while(n >= 1) {
+			digit = n % 10
+			result = result + digit
+			n = (n - digit) / 10
+		} 
+		if (result >= 10) {
+			return toSingle(result)
+		} else {
+			return result
+		}
+	}
+
+//
+	var toSingle2 = function(n) {
+		var digit
+		do {
+			result = 0
+			while(n >= 1) {
+				digit = n % 10
+				result = result + digit
+				n = (n - digit) / 10
+				}
+				n = result
+			} 
+			while(result >= 10) {
+				return result
+			}
+		}
+</script>

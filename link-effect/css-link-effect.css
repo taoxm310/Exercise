@@ -1,0 +1,420 @@
+/* for all */
+* {
+	color:white;
+	font-family: 'Raleway', sans-serif;
+	font-size: 1.1em;
+	text-decoration: none;
+}
+
+*:after, *:before {
+	font-size: 1.1em;
+}
+
+section {
+	padding:8em 3em;
+	text-align: center;
+}
+
+/* styleone */
+
+section.styleone {
+
+	background-color: #435A6B;
+
+}
+
+section.styleone a {
+	display: inline-block;
+	margin:0 25px;
+	position: relative;
+}
+
+section.styleone a::before, section.styleone a::after {
+	display: inline-block;
+	opacity: 0;
+	transition: transform 0.3s, opacity 0.2s;
+} /* translate function to make move effect*/
+
+section.styleone a::before {
+	content: '[';
+	margin-right: 10px;
+	transform: translateX(20px); 
+}
+
+section.styleone a::after {
+	content: ']';
+	margin-left: 10px;
+	transform: translateX(-20px);
+}
+
+section.styleone a:hover::before, section.styleone a:hover::after {
+	opacity: 1;
+	transform: translateX(0px);
+}
+
+/* styletwo */
+
+section.styletwo {
+	background-color: #F19F0F;
+	text-transform:uppercase;
+}
+
+section.styletwo a {
+	display: inline-block;
+	margin:10px 25px;
+	position: relative; /* make 'a' be the parent to control the position of pseudo element after */
+	padding:8px 0; /* padding to control the place between the line and the word */
+
+}
+
+section.styletwo a::after {
+	content: '';
+	background-color: rgba(0, 0, 0, 0.1);
+	height: 4px;
+	display: inline-block;
+	position: absolute;
+	left:0;
+	top: 100%;
+	width:100%; /* make the width of line match the width of the word */
+	opacity: 0;
+	transform: translateY(10px);
+}
+
+section.styletwo a:hover::after {
+	opacity: 1;
+	transform: translateY(0px);
+	transition: opacity 0.2s, transform 0.3s;
+}
+
+
+/* stylethree */
+
+section.stylethree {
+	background-color: #3FA46A;
+	text-transform: capitalize;
+}
+
+section.stylethree a {
+	display: inline-block;
+	margin:10px 25px;
+	position: relative;
+	padding:8px 0;
+}
+
+section.stylethree a::after {
+	content: '';
+	display: inline-block;
+	background-color: #fff;
+	height: 0;
+	transform:translateY(-10px);
+	width: 100%;
+	opacity: 0;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	transform-origin: 50% 0;
+	transition: all 0.3s;
+}
+
+section.stylethree a:hover::after {
+	opacity: 1;
+	height: 5px;
+	transform:translateY(0px);
+}
+
+/* stylefour */
+
+section.stylefour {
+	background-color: #CD4436;
+	text-transform: uppercase;
+	perspective: 1000px;
+}
+
+/* container */
+section.stylefour a {
+	transform-style: preserve-3d;
+	transition: transform 0.33s;
+	position: relative;
+	display: inline-block;
+	margin-right: 25px;
+}
+
+/* the two faces of the cube */
+section.stylefour a span {
+	background-color:#FF7560;
+	display: inline-block;
+	padding:10px;
+	transform:translateZ(25px);
+
+}
+
+section.stylefour a::after {
+	content: attr(name);
+	display: inline-block;
+	background-color: #C14200;
+	padding:10px;
+	position: absolute;
+	left: 0;
+	transform:rotateX(-90deg) translateZ(25px);
+	transition: background-color 0.33s;
+
+}
+
+/* rotate the cube */
+section.stylefour a:hover{
+	transform: rotateX(89deg);
+
+}
+
+section.stylefour a:hover::after {
+	background-color:#FF8C76;
+}
+
+/* stylefive */
+
+section.stylefive {
+	background-color: #0E83CD;
+	text-transform: uppercase;
+}
+
+/* a work as the window*/
+section.stylefive a {
+	display: inline-block;
+	margin:0 25px;
+	padding:0 8px;
+	overflow: hidden;
+}
+
+/* span move under window */
+section.stylefive a span {
+	display: inline-block;
+	position: relative;
+	transform:translateY(0);
+	transition: all 0.5s;
+}
+
+section.stylefive  span::after {
+	content: attr(name);
+	font-weight: 700;
+	position:absolute;
+	font-size:1em;
+	left: 0;
+	top: 100%;
+}
+
+section.stylefive a:hover span{
+	transform:translateY(-100%);
+}
+
+
+/* stylesix */
+
+section.stylesix {
+	text-transform: uppercase;
+	background-color: #435A6B;
+} 
+
+section.stylesix a {
+	display: inline-block;
+	margin:0 25px;
+	padding:10px;
+	position:relative;
+	overflow: hidden;
+}
+
+/* two border */
+
+section.stylesix a::after, section.stylesix a::before  {
+	content:'';
+    display:inline-block;
+    width:100%;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left: 2px;
+    transition:transform 0.3s;
+}
+section.stylesix a::before {
+    border-left:2px solid;
+    transform:translateY(-100%);
+
+}
+
+section.stylesix a::after {
+    border-top:2px solid;
+    margin-bottom: 2px;
+}
+
+/* hover effect */
+section.stylesix a:hover::after {
+	transform:translateY(100%);
+}
+
+section.stylesix a:hover::before {
+	transform:translateY(0);
+
+}
+
+/* styleseven */
+
+section.styleseven {
+	background-color: #ECF0F1;
+	text-transform: uppercase;
+	color:#566473;
+}
+
+section.styleseven a {
+	color:#566473;
+	font-weight: 900;
+	display: inline-block;
+	position: relative;
+	margin:0 25px;
+	padding:10px 0;
+	border-bottom: 2px solid;
+	transition: 0.3s;
+}
+
+section.styleseven a::before, section.styleseven a::after {
+	content: '';
+	border-bottom:2px solid;
+	display: inline-block;
+	position: absolute;
+	width:100%;
+	top:100%;
+	left: 0;
+	transition: 0.3s;
+}
+
+/* hover effect */
+
+section.styleseven a:hover::before {
+	top:0;
+	transform:scaleX(1.15);
+}
+
+section.styleseven a:hover::after {
+	transform:scaleX(1.15);
+}
+
+/* style-eight*/
+
+section.style-8 {
+	background-color: #435A6B;
+}
+
+section.style-8 a {
+	display: inline-block;
+	margin:0 25px;
+	padding:10px 15px;
+	position: relative;
+
+}
+
+section.style-8 a::before{
+	content: '';
+	border:3px solid #354856;
+	display: inline-block;
+	width: 100%;
+	position: absolute;
+	left: -3px;
+	top: 0;
+	bottom: 0;
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+section.style-8 a::after {
+	content: '';
+	border:3px solid #fff;
+	display: inline-block;
+	width: 100%;
+	position: absolute;
+	left: -3px;
+	top: 0;
+	bottom: 0;
+	opacity: 0;
+	transform:translate(20%, -20%);
+	transition: opacity 0.3s,transform 0.3s;
+}
+
+section.style-8 a:hover::after {
+	transform:translate(0, 0);
+		opacity: 1;
+}
+section.style-8 a:hover::before {
+	opacity: 0;
+}
+
+/* stylenine*/
+
+section.style-9 {
+	background-color: #16A085;
+}
+
+section.style-9 a {
+	display: inline-block;
+	margin:0 25px;
+	position: relative;
+	overflow: hidden;
+}
+section.style-9 a span {
+	position: relative;
+	display: inline-block;
+	transition:transform 2s;
+	padding:10px 15px;
+	background-color: #0F7C67;
+	transition:transform .4s;
+}
+section.style-9 a::before {
+	content: attr(name);
+	background-color: white;
+	color:#0F7C67;
+	position: absolute;
+	padding:10px 15px;
+	top:0;
+	right: 100%;
+	transition:transform .4s;
+}
+
+section.style-9 a:hover::before {
+	transform:translateX(100%);
+}
+
+section.style-9 a:hover span{
+	transform:translateX(100%);
+}
+
+
+/* styleten*/
+
+section.style-10 {
+	background-color: #0E83CD;
+}
+
+section.style-10 a {
+	display: inline-block;
+	margin:0 25px;
+	padding:10px 0;
+	position: relative;
+	border-top:2px solid rgb(9,114,180);
+	color:rgb(9,114,180);
+	position: relative;
+}
+
+section.style-10 a::after {
+	content: attr(name);
+	padding:10px 0;
+	color:white;
+	position: absolute;
+	font-size: inherit;
+	border-bottom: 2px solid;
+	left: 0;
+	top: 0;
+	width: 0;
+	overflow: hidden;
+	transition: width .6s;
+}
+
+section.style-10 a:hover::after {
+	width: 100%;
+}
